@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Typography, Button, Box} from "@mui/material";
 import CreditList from "./CreditList";
+import { flexbox } from "@mui/system";
 const { v4: uuidv4 } = require("uuid");
 
 const CreditNumberValidation = () => {
@@ -191,11 +192,11 @@ const CreditNumberValidation = () => {
         </Box>
       </Box>
       {editStatus ? (
-          <>
+          <Box sx={{display:"flex", justifyContent:"flex-start", alignItems:"center",margin:"16px"}}>
           <Typography>Edit Card Number : </Typography>
         <input maxLength={16} value={editNumber} onChange={(e) => setEditNumber(e.target.value)} style={{width:"150px", height:"30px", fontSize:"16px", marginRight:"8px"}}/>
         <Button onClick={handleSaveNumber} variant="contained">Save</Button>
-        </>
+        </Box>
       ) : (
         <CreditList
           list={creditList}
@@ -203,11 +204,6 @@ const CreditNumberValidation = () => {
           handleEdit={handleEdit}
         />
       )}
-      {/* {creditList.length ? (
-        <CreditList list={creditList} handleDelete={handleDelete} handleEdit={handleEdit}/>
-      ) : (
-        <Typography>No Credit Data Available to Display</Typography>
-      )} */}
     </>
   );
 };
